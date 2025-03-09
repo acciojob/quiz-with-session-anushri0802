@@ -45,13 +45,17 @@ function renderQuestions() {
       input.type = "radio";
       input.name = `question-${index}`;
       input.value = choice;
+
+      // Ensure checked state persists
       if (userAnswers[index] === choice) {
         input.checked = true;
       }
+
       input.addEventListener("change", () => {
         userAnswers[index] = choice;
         sessionStorage.setItem("progress", JSON.stringify(userAnswers));
       });
+
       label.appendChild(input);
       label.appendChild(document.createTextNode(choice));
       questionDiv.appendChild(label);
@@ -61,6 +65,7 @@ function renderQuestions() {
   });
 }
 
+// Call function to render questions
 renderQuestions();
 
 // Handle quiz submission
